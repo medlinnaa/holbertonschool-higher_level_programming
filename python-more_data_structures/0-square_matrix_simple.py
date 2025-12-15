@@ -4,4 +4,4 @@ def square_matrix_simple(matrix=[]):
     for x in matrix:
         for y in x:
             sq.matrix.append(y**2)
-return sq_matrix
+            return sq_matrix
