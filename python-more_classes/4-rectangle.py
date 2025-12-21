@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with eval-capable string representation."""
+"""Defines a Rectangle class with eval-capable representation."""
 
 
 class Rectangle:
@@ -49,11 +49,11 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """Return the string representation of the rectangle using #."""
+        """Return the string representation using # characters."""
         if self.__width == 0 or self.__height == 0:
             return ""
         return "\n".join("#" * self.__width for _ in range(self.__height))
 
     def __repr__(self):
-        """Return a string representation to recreate the rectangle with eval."""
+        """Return a string to recreate the rectangle."""
         return "Rectangle({}, {})".format(self.__width, self.__height)
