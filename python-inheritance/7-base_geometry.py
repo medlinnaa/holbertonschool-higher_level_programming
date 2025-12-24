@@ -1,16 +1,27 @@
 #!/usr/bin/python3
-"""Defines a BaseGeometry class with integer validation."""
+"""Defines a class BaseGeometry"""
 
 
 class BaseGeometry:
-    """Represents a base geometry class."""
+    """Represent base geometry"""
 
     def area(self):
-        """Raise an exception indicating area is not implemented."""
+        """Not implemented"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """Validate that value is a positive integer."""
+        """Validate a parameter as an integer.
+
+        Args:
+            name (str): The name of the parameter.
+            value (int): The parameter to validate.
+        Raises:
+            TypeError: If value is not an integer.
+            ValueError: If value is <= 0.
+        """
+        # We use type() instead of isinstance() because checking
+        # isinstance(True, int) would return True, but the task requires
+        # us to treat bools as non-integers.
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
