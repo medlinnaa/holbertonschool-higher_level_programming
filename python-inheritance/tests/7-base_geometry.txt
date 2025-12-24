@@ -1,45 +1,52 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
-# Test area()
+# Test area() method explicitly
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
 
-# integer_validator() valid cases
->>> bg.integer_validator("age", 1)
->>> bg.integer_validator("age", 12)
+# Test integer_validator with valid integers
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
 
-# integer_validator() invalid type cases
->>> bg.integer_validator("age", "4")
+# Test integer_validator with String (TypeError)
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+TypeError: name must be an integer
+
+# Test integer_validator with Float (TypeError)
+>>> bg.integer_validator("age", 12.5)
 Traceback (most recent call last):
 TypeError: age must be an integer
 
+# Test integer_validator with Tuple (TypeError)
 >>> bg.integer_validator("age", (4,))
 Traceback (most recent call last):
 TypeError: age must be an integer
 
+# Test integer_validator with List (TypeError)
 >>> bg.integer_validator("age", [3])
 Traceback (most recent call last):
 TypeError: age must be an integer
 
+# Test integer_validator with Boolean (TypeError)
+# This is the tricky one!
 >>> bg.integer_validator("age", True)
 Traceback (most recent call last):
 TypeError: age must be an integer
 
->>> bg.integer_validator("age", {3, 4})
-Traceback (most recent call last):
-TypeError: age must be an integer
-
+# Test integer_validator with None (TypeError)
 >>> bg.integer_validator("age", None)
 Traceback (most recent call last):
 TypeError: age must be an integer
 
-# integer_validator() invalid value cases
+# Test integer_validator with 0 (ValueError)
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
 
->>> bg.integer_validator("age", -4)
+# Test integer_validator with Negative number (ValueError)
+>>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
-ValueError: age must be greater than 0
+ValueError: distance must be greater than 0

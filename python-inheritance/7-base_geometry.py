@@ -19,10 +19,8 @@ class BaseGeometry:
             TypeError: If value is not an integer.
             ValueError: If value is <= 0.
         """
-        # We use type() instead of isinstance() because checking
-        # isinstance(True, int) would return True, but the task requires
-        # us to treat bools as non-integers.
+        # strict check for type to ensure Booleans (True/False) fail
         if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
+            raise TypeError("{:s} must be an integer".format(name))
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError("{:s} must be greater than 0".format(name))
